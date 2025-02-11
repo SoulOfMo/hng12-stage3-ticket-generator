@@ -1,0 +1,246 @@
+@import url(https://db.onlinewebfonts.com/c/1a5c2d8bbd4e28d99a6efcbb9a5b378f?family=JejuMyeongjo);
+@import url("https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+/* reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-size: 62.5%;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+main {
+  background-color: #02191d;
+  min-height: 100vh;
+  color: #fff;
+  background-image: radial-gradient(at bottom, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%);
+  font-size: 1.6rem;
+  font-family: "JejuMyeongjo";
+  padding: 2rem 12rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #05252c;
+  border: 1px solid #197686;
+  padding: 1.2rem 1.6rem;
+  border-radius: 24px;
+  align-items: center;
+}
+nav .logo img {
+  width: 92px;
+}
+nav ul {
+  display: inherit;
+  flex-direction: row;
+  gap: 2.6rem;
+  font-size: 1.8rem;
+}
+nav ul li:not(.active) {
+  color: #b3b3b3;
+}
+nav button {
+  background-color: #fff;
+  padding: 1.6rem 2.4rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.form-container {
+  background-color: #041e23;
+  border: 1px solid #0e464f;
+  margin: 11.2rem auto;
+  padding: 4.8rem;
+  border-radius: 4rem;
+  max-width: 70rem;
+}
+.form-container .step-details {
+  display: flex;
+  justify-content: space-between;
+}
+.form-container hr.progress-bar {
+  margin-top: 1.2rem;
+  margin-bottom: 3.6rem;
+  background-color: #0e464f;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
+  height: 3px;
+  transition: background-color 0.5s ease-in-out;
+}
+.form-container hr.progress-bar.step-1 {
+  background: linear-gradient(to right, #24a0b5 0%, #24a0b5 33.3%, #0e464f 33.3%, #0e464f 100%);
+}
+
+form {
+  background-color: #08252b;
+  border-radius: 3.2rem;
+  padding: 2.4rem;
+  border: 1px solid #0e464f;
+}
+form .steps .ticket-details {
+  background-color: rgba(10, 12, 17, 0.062745098);
+  background-image: radial-gradient(circle at top left, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%);
+  border: 1px solid #07373f;
+  border-top: none;
+  border-radius: 2.4rem;
+  padding: 2.4rem;
+  max-width: 55.6rem;
+  text-align: center;
+}
+form .steps .ticket-details h2 {
+  font-family: "Road Rage", serif;
+  font-size: 6.2rem;
+}
+form .steps .ticket-details p {
+  font-family: "Roboto", serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+form .steps .ticket-details + hr {
+  border: 2px solid #07373f;
+  margin-top: 20px;
+  margin: 3.2rem 0;
+}
+form .steps .ticket-container {
+  font-family: "Roboto", serif;
+  margin-bottom: 3.2rem;
+}
+form .steps .ticket-container span.label {
+  font-size: 1.6rem;
+}
+form .steps .ticket-container .ticket-type {
+  background-color: #052228;
+  border-radius: 2.4rem;
+  border: 2px solid #07373f;
+  display: flex;
+  padding: 1.6rem;
+  gap: 2.4rem;
+  margin-top: 1.6rem;
+  flex-wrap: wrap;
+}
+form .steps .ticket-container .ticket-type button {
+  width: 24.2rem;
+  padding: 0.8rem;
+  border: 1px solid #07373f;
+  border-radius: 1.2rem;
+  background-color: transparent;
+  color: #fafafa;
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+form .steps .ticket-container .ticket-type button .type {
+  line-height: 1.5;
+  display: flex;
+  font-size: 1.6rem;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+form .steps .ticket-container .ticket-type button .price {
+  background-color: #0e464f;
+  font-size: 2rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  text-align: right;
+  width: 8rem;
+  border: 2px solid #2ba4b9;
+}
+form .steps .ticket-container .ticket-type button.active-btn {
+  background-color: #197686;
+  border: 1px solid #197686;
+}
+form .steps .number-of-ticket {
+  font-family: "Roboto", serif;
+  font-size: 1.6rem;
+}
+form .steps .number-of-ticket select {
+  margin-top: 1.6rem;
+  width: 100%;
+  outline: none;
+  padding: 12px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #07373f;
+}
+form .steps .number-of-ticket select:focus {
+  outline: none;
+  background-color: #02191d;
+}
+form .form-btn {
+  margin-top: 3.2rem;
+  border: 1px solid #0e464f;
+  border-radius: 2.4rem;
+  padding: 0 4.8rem;
+  width: 100%;
+  display: flex;
+  gap: 4.8rem;
+}
+form .form-btn button {
+  border-radius: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  font-family: "JejuMyeongjo";
+  font-size: 1.6rem;
+  text-align: center;
+  width: 21.4rem;
+  height: 4.8rem;
+  background-color: transparent;
+}
+form .form-btn button.cancel {
+  border: 1px solid #24a0b5;
+  color: #24a0b5;
+}
+form .form-btn button.next {
+  background-color: #24a0b5;
+  color: #fff;
+}/*# sourceMappingURL=styles.css.map */
