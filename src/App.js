@@ -6,7 +6,7 @@ import ticketimage from "./assests/images/ticket-image.png";
 import barcode from "./assests/images/bar-code.png";
 // import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
 import "./App.css";
-import { handleAssetType } from "@cloudinary/url-gen/internal/url/cloudinaryURL";
+// import { handleAssetType } from "@cloudinary/url-gen/internal/url/cloudinaryURL";
 
 function App() {
   const [step, setStep] = useState(1);
