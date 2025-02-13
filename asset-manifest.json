@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/hng12-stage3-ticket-generator/static/css/main.0b3fe9ff.css",
-    "main.js": "/hng12-stage3-ticket-generator/static/js/main.4c1a869f.js",
+    "main.css": "/hng12-stage3-ticket-generator/static/css/main.c86382a7.css",
+    "main.js": "/hng12-stage3-ticket-generator/static/js/main.815774cc.js",
     "static/js/453.80c801fa.chunk.js": "/hng12-stage3-ticket-generator/static/js/453.80c801fa.chunk.js",
+    "static/media/ticket-image.png": "/hng12-stage3-ticket-generator/static/media/ticket-image.3227ab44312718c4da33.png",
+    "static/media/cloud-download.svg": "/hng12-stage3-ticket-generator/static/media/cloud-download.57c9140fab2e0e96585b26f6eb6dc703.svg",
     "index.html": "/hng12-stage3-ticket-generator/index.html",
-    "main.0b3fe9ff.css.map": "/hng12-stage3-ticket-generator/static/css/main.0b3fe9ff.css.map",
-    "main.4c1a869f.js.map": "/hng12-stage3-ticket-generator/static/js/main.4c1a869f.js.map",
+    "main.c86382a7.css.map": "/hng12-stage3-ticket-generator/static/css/main.c86382a7.css.map",
+    "main.815774cc.js.map": "/hng12-stage3-ticket-generator/static/js/main.815774cc.js.map",
     "453.80c801fa.chunk.js.map": "/hng12-stage3-ticket-generator/static/js/453.80c801fa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b3fe9ff.css",
-    "static/js/main.4c1a869f.js"
+    "static/css/main.c86382a7.css",
+    "static/js/main.815774cc.js"
   ]
 }
