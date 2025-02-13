@@ -5,9 +5,25 @@
   padding: 4.8rem;
   border-radius: 4rem;
   max-width: 70rem;
+  @media (max-width: "768px") {
+    margin-top: 3rem;
+    padding: 2.4rem;
+  }
   .step-details {
     display: flex;
     justify-content: space-between;
+    p {
+      font-family: $ff3;
+      font-weight: normal;
+    }
+    @media (max-width: 425px) {
+      flex-direction: column;
+      gap: 1.2rem;
+      h1 {
+        font-size: 2.4rem;
+        font-weight: normal;
+      }
+    }
     &::after {
       //   content: "";
       //   position: absolute;
@@ -15,8 +31,6 @@
       //   width: 100%;
       //   top: 38px;
       //   left: 0;
-    }
-    h1 {
     }
   }
 
@@ -37,6 +51,33 @@
         $border-color2 33.3%,
         $border-color2 100%
       );
+    }
+  }
+  .new-ticket-container {
+    display: flex;
+    margin-top: 5.6rem;
+    gap: 2.4rem;
+    @media (max-width: "425px") {
+      flex-direction: column-reverse;
+    }
+    button {
+      border-radius: 0.8rem;
+      padding: 1.2rem 2.4rem;
+      font-family: $ff;
+      font-size: 1.6rem;
+      text-align: center;
+      width: 29rem;
+      height: 4.8rem;
+      background-color: transparent;
+      &.new-ticket {
+        border: 1px solid $border-color3;
+        color: $border-color3;
+      }
+      &.download-btn {
+        background-color: $border-color3;
+        color: $neutral1;
+        border: none;
+      }
     }
   }
 }

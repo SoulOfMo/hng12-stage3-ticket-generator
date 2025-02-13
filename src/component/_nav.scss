@@ -1,6 +1,5 @@
-nav {
+header {
   display: flex;
-
   justify-content: space-between;
   background-color: $green-300;
   border: 1px solid $green-500;
@@ -19,6 +18,9 @@ nav {
 
     li:not(.active) {
       color: $neutral2;
+    }
+    @media (max-width: "768px") {
+      display: none;
     }
   }
   button {

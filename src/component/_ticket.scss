@@ -1,0 +1,128 @@
+.ticket-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $ff3;
+
+  p {
+    text-align: center;
+    line-height: 1.5;
+    @media (max-width: 450px) {
+      margin-top: 0;
+    }
+  }
+  @media (max-width: 450px) {
+    h1 {
+      font-weight: bold;
+      font-size: 2.4rem;
+      text-align: center;
+    }
+  }
+  .ticket {
+    margin-top: 6.4rem;
+    height: 60rem;
+    width: 30rem;
+    padding: 2rem 2rem 2.2rem;
+
+    .ticket-details {
+      width: 26rem;
+      height: 44.6rem;
+      border: 1px solid $border-color3;
+      border-radius: 1.6rem;
+      background-color: #031e2110;
+      padding: 1.4rem;
+      margin-bottom: 4.3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .ticket-info {
+        display: inherit;
+        flex-direction: column;
+        align-items: center;
+        p {
+          font-family: $ff2;
+          font-size: 3.4rem;
+        }
+        span {
+          font-size: 1rem;
+          font-family: $ff3;
+        }
+        .date {
+          margin-top: 0.4rem;
+        }
+      }
+
+      .attendee-image {
+        margin: 2rem 1.75rem;
+        border-radius: 1.2rem;
+        border: 4px solid #24a0b550;
+        width: 140px;
+        height: 140px;
+        overflow: hidden;
+      }
+      .attendee-details {
+        border-radius: 0.8rem;
+        background-color: #08343c;
+        border: 1px solide #133d44;
+        width: 23.2rem;
+        height: 16rem;
+        padding: 0.4rem;
+        font-family: $ff3;
+        .attendee-info {
+          border-bottom: 1px solid #12464e;
+        }
+        .attendee-info,
+        .attendee-ticket {
+          display: flex;
+          padding: 0.4rem;
+          span {
+            &.detail {
+              width: 10.8rem;
+              display: flex;
+              gap: 0.4rem;
+              padding: 0.4rem;
+              flex-direction: column;
+              border-right: 1px solid #12464e;
+            }
+            &.attendee-email {
+              padding-left: 0.8rem;
+              border: none;
+            }
+            &.ticket-for {
+              border: none;
+              padding-left: 0.8rem;
+            }
+            .placeholder {
+              color: #aaa;
+              font-size: 1rem;
+            }
+            .name {
+              font-size: 1.2rem;
+            }
+          }
+        }
+        .special-request {
+          display: flex;
+          flex-direction: column;
+          padding: 0.8rem;
+          gap: 0.4rem;
+          p {
+            color: #aaa;
+            font-size: 1rem;
+          }
+          span {
+            font-size: 1rem;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  //   BarCode section
+  .barcode {
+    width: 23.6rem;
+    height: 6.8rem;
+    margin: 0 auto;
+  }
+}
