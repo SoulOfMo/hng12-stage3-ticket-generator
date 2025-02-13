@@ -37,6 +37,12 @@ form {
         font-family: $ff3;
         font-size: 1.6rem;
         line-height: 1.6;
+        @media (max-width: "450px") {
+          font-size: 1.4rem;
+          &.location {
+            margin-top: 4rem;
+          }
+        }
       }
       & + hr {
         border: $border2;
@@ -60,6 +66,7 @@ form {
         margin-top: 1.6rem;
         @media (max-width: "768px") {
           flex-direction: column;
+          width: 28.7rem;
         }
 
         button {
@@ -73,8 +80,12 @@ form {
           flex-direction: column;
           justify-content: space-between;
           text-align: left;
+
           @media (max-width: 450px) {
             width: 100%;
+          }
+          @media (max-width: "768px") {
+            width: 25.5rem;
           }
           .price {
             font-size: 2.4rem;

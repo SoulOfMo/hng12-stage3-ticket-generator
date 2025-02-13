@@ -77,6 +77,9 @@ main .error-container .errorMsg {
   color: red;
   font-size: 1.2rem;
 }
+main strong {
+  overflow: hidden;
+}
 
 header {
   display: flex;
@@ -156,6 +159,12 @@ header button {
 }
 .form-container hr.progress-bar.step-1 {
   background: linear-gradient(to right, #24a0b5 0%, #24a0b5 33.3%, #0e464f 33.3%, #0e464f 100%);
+}
+.form-container hr.progress-bar.step-2 {
+  background: linear-gradient(to right, #24a0b5 0%, #24a0b5 66.6%, #0e464f 66.6%, #0e464f 100%);
+}
+.form-container hr.progress-bar.step-3 {
+  background: linear-gradient(to right, #24a0b5 0%, #24a0b5 100%, #0e464f 100%, #0e464f 100%);
 }
 .form-container .new-ticket-container {
   display: flex;
@@ -361,6 +370,14 @@ form .steps .ticket-details p {
   font-size: 1.6rem;
   line-height: 1.6;
 }
+@media (max-width: 450px) {
+  form .steps .ticket-details p {
+    font-size: 1.4rem;
+  }
+  form .steps .ticket-details p.location {
+    margin-top: 4rem;
+  }
+}
 form .steps .ticket-details + hr {
   border: 2px solid #07373f;
   margin-top: 20px;
@@ -385,6 +402,7 @@ form .steps .ticket-container .ticket-types {
 @media (max-width: 768px) {
   form .steps .ticket-container .ticket-types {
     flex-direction: column;
+    width: 28.7rem;
   }
 }
 form .steps .ticket-container .ticket-types button {
@@ -402,6 +420,11 @@ form .steps .ticket-container .ticket-types button {
 @media (max-width: 450px) {
   form .steps .ticket-container .ticket-types button {
     width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  form .steps .ticket-container .ticket-types button {
+    width: 25.5rem;
   }
 }
 form .steps .ticket-container .ticket-types button .price {

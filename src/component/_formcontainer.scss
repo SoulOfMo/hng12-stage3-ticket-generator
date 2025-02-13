@@ -24,14 +24,6 @@
         font-weight: normal;
       }
     }
-    &::after {
-      //   content: "";
-      //   position: absolute;
-      //   border-bottom: 2px solid hsl(0, 94%, 66%);
-      //   width: 100%;
-      //   top: 38px;
-      //   left: 0;
-    }
   }
 
   hr.progress-bar {
@@ -49,6 +41,24 @@
         $border-color3 0%,
         $border-color3 33.3%,
         $border-color2 33.3%,
+        $border-color2 100%
+      );
+    }
+    &.step-2 {
+      background: linear-gradient(
+        to right,
+        $border-color3 0%,
+        $border-color3 66.6%,
+        $border-color2 66.6%,
+        $border-color2 100%
+      );
+    }
+    &.step-3 {
+      background: linear-gradient(
+        to right,
+        $border-color3 0%,
+        $border-color3 100%,
+        $border-color2 100%,
         $border-color2 100%
       );
     }

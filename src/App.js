@@ -6,9 +6,18 @@ import ticketimage from "./assests/images/ticket-image.png";
 import barcode from "./assests/images/bar-code.png";
 // import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
 import "./App.css";
+import { handleAssetType } from "@cloudinary/url-gen/internal/url/cloudinaryURL";
 
 function App() {
   const [step, setStep] = useState(1);
+  const [errors, setErrors] = useState({});
+  const [selectedTicket, setSelectedTicket] = useState("Regular");
+  const [noOfTickets, setNoOfTickets] = useState(1);
+  function handleSelectedTicket(e) {
+    e.preventDefault();
+    setSelectedTicket(e.target.value);
+    console.log(e.target.value);
+  }
 
   const [formData, setFormData] = useState(() => {
     const storedData = JSON.parse(localStorage.getItem("formData"));
@@ -52,7 +61,6 @@ function App() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const [errors, setErrors] = useState({});
   useEffect(() => {
     localStorage.setItem("formData", JSON.stringify(formData));
   }, [formData]);
@@ -91,6 +99,10 @@ function App() {
         errorMsg={errors}
         avatar={avatar}
         handleAvatarChange={handleAvatarChange}
+        handleSelectedTicket={handleSelectedTicket}
+        selectedTicket={selectedTicket}
+        noOfTickets={noOfTickets}
+        setNoOfTickets={setNoOfTickets}
       />
     </main>
   );
@@ -124,14 +136,22 @@ function FormContainer({
   avatar,
   handleDownlaod,
   handleAvatarChange,
+  handleSelectedTicket,
+  selectedTicket,
+  noOfTickets,
+  setNoOfTickets,
 }) {
   return (
     <div className="form-container">
       <div className="step-details">
-        <h1>Ticket Selection</h1>
+        <h1>
+          {(step === 1 && "Ticket Selection") ||
+            (step === 2 && "Attendee Details") ||
+            (step === 3 && "Ready")}
+        </h1>
         <p>Step 1/3</p>
       </div>
-      <hr className="progress-bar step-1" />
+      <hr className={`progress-bar step-${step}`} />
       {step === 3 ? (
         ""
       ) : (
@@ -145,6 +165,10 @@ function FormContainer({
           errorMsg={errorMsg}
           avatar={avatar}
           handleAvatarChange={handleAvatarChange}
+          handleSelectedTicket={handleSelectedTicket}
+          selectedTicket={selectedTicket}
+          noOfTickets={noOfTickets}
+          setNoOfTickets={setNoOfTickets}
         />
       )}
       {step === 3 ? (
@@ -152,6 +176,9 @@ function FormContainer({
           handleReset={handleReset}
           handleDownlaod={handleDownlaod}
           avatar={avatar}
+          selectedTicket={selectedTicket}
+          noOfTickets={noOfTickets}
+          formData={formData}
         />
       ) : (
         ""
@@ -170,11 +197,24 @@ function Form({
   errorMsg,
   avatar,
   handleAvatarChange,
+  handleSelectedTicket,
+  selectedTicket,
+  noOfTickets,
+  setNoOfTickets,
 }) {
   return (
     <form>
       <div className="steps">
-        {step === 1 ? <TicketSelcection /> : ""}
+        {step === 1 ? (
+          <TicketSelcection
+            handleSelectedTicket={handleSelectedTicket}
+            selectedTicket={selectedTicket}
+            noOfTickets={noOfTickets}
+            setNoOfTickets={setNoOfTickets}
+          />
+        ) : (
+          ""
+        )}
         {step === 2 ? (
           <AttendeeDetails
             errorMsg={errorMsg}
@@ -200,7 +240,12 @@ function Form({
   );
 }
 
-function TicketSelcection() {
+function TicketSelcection({
+  handleSelectedTicket,
+  selectedTicket,
+  noOfTickets,
+  setNoOfTickets,
+}) {
   return (
     <>
       <div className="ticket-details">
@@ -209,7 +254,9 @@ function TicketSelcection() {
           Join us for an unforgettable experience at [Event Name]! Secure your
           spot now.
         </p>
-        <p>📍[Event Location] || March 15, 2025 | 7:00 PM</p>
+        <p className="location">
+          📍[Event Location] || March 15, 2025 | 7:00 PM
+        </p>
       </div>
 
       <hr></hr>
@@ -218,22 +265,25 @@ function TicketSelcection() {
         <span className="label">Select Ticket Type:</span>
         <div className="ticket-types">
           <TicketButton
-            className="active-btn"
+            handleSelectedTicket={handleSelectedTicket}
             price="free"
-            type="Regular Access"
+            type="Regular"
             noOfTicket="20/52"
+            selectedTicket={selectedTicket}
           />
 
           <TicketButton
-            className=""
-            price="150"
-            type="VIP Access"
+            selectedTicket={selectedTicket}
+            handleSelectedTicket={handleSelectedTicket}
+            price="$150"
+            type="VIP"
             noOfTicket="20/52"
           />
           <TicketButton
-            className=""
-            price="300"
-            type="VVIP ACCESS"
+            selectedTicket={selectedTicket}
+            handleSelectedTicket={handleSelectedTicket}
+            price="$300"
+            type="VVIP"
             noOfTicket="20/52"
           />
         </div>
@@ -241,7 +291,7 @@ function TicketSelcection() {
 
       <div className="number-of-ticket">
         <span>Number of Tickets</span>
-        <select>
+        <select onChange={(e) => setNoOfTickets(e.target.value)}>
           {Array.from({ length: 5 }, (_, i) => i + 1).map((num) => (
             <option value={num} key={num}>
               {num}
@@ -253,11 +303,21 @@ function TicketSelcection() {
   );
 }
 
-function TicketButton({ className, price, type, noOfTicket }) {
+function TicketButton({
+  price,
+  type,
+  noOfTicket,
+  handleSelectedTicket,
+  selectedTicket,
+}) {
   return (
-    <button className={className}>
-      <span className="price">${price}</span>
-      <span className="type">{type}</span>
+    <button
+      className={selectedTicket === type ? "active-btn" : ""}
+      value={type}
+      onClick={handleSelectedTicket}
+    >
+      <span className="price">{price}</span>
+      <span className="type">{type} Access</span>
       <span>{noOfTicket}</span>
     </button>
   );
@@ -348,7 +408,14 @@ function AttendeeDetails({
   );
 }
 
-function Ticket({ handleReset, handleDownlaod, avatar }) {
+function Ticket({
+  handleReset,
+  handleDownlaod,
+  avatar,
+  selectedTicket,
+  formData,
+  noOfTickets,
+}) {
   return (
     <>
       <div className="ticket-container">
@@ -372,21 +439,21 @@ function Ticket({ handleReset, handleDownlaod, avatar }) {
               <div className="attendee-info">
                 <span className="attendee-name detail">
                   <span className="placeholder">Enter your name</span>
-                  <strong className="name"> Morin Sultan</strong>
+                  <strong className="name">{formData.fullName}</strong>
                 </span>
                 <span className="attendee-email detail">
-                  <span className="placeholder">Enter your name</span>
-                  <strong className="name"> Morin Sultan</strong>
+                  <span className="placeholder">Enter your email</span>
+                  <strong className="name">{formData.email}</strong>
                 </span>
               </div>
               <div className="attendee-ticket">
                 <span className="ticket-type detail">
                   <span className="placeholder">Ticket Type:</span>
-                  <span className="name"> VIP </span>
+                  <span className="name"> {selectedTicket} </span>
                 </span>
                 <span className="ticket-for detail">
                   <span className="placeholder">Ticket for:</span>
-                  <span className="name"> 1</span>
+                  <span className="name"> {noOfTickets}</span>
                 </span>
               </div>
 
