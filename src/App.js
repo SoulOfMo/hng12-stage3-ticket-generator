@@ -462,6 +462,7 @@ function AttendeeDetails({
           placeholder="Textarea"
           value={formData.request}
           onChange={handleChange}
+          maxLength={30}
         ></textarea>
       </div>
     </>

@@ -39,6 +39,7 @@
       border-radius: 1.6rem;
       background-color: #031e2110;
       padding: 1.4rem;
+      padding-bottom: 0;
       margin-bottom: 4.3rem;
       display: flex;
       flex-direction: column;
@@ -120,8 +121,9 @@
         .special-request {
           display: flex;
           flex-direction: column;
-          padding: 0.8rem;
+          padding: 0.8rem 0.8rem 0;
           gap: 0.4rem;
+          height: 4.8rem;
           p {
             color: #aaa;
             font-size: 1rem;
