@@ -1,11 +1,37 @@
 import { useState, useEffect } from "react";
+import "./App.css";
+import html2canvas from "html2canvas";
 import logo from "./assests/images/logo.png";
 import cloudDownload from "./assests/images/cloud-download.svg";
 import envelope from "./assests/images/envelope.png";
 import ticketimage from "./assests/images/ticket-image.png";
 import barcode from "./assests/images/bar-code.png";
-// import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
-import "./App.css";
+
+const uploadImageToCloudinary = async (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "my_upload_preset");
+  try {
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/dynbufh4j/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Image upload failed");
+    }
+
+    const data = await response.json();
+    return data.secure_url;
+  } catch (error) {
+    console.error("Error uploading image:", error);
+    return null;
+  }
+};
+
 // import { handleAssetType } from "@cloudinary/url-gen/internal/url/cloudinaryURL";
 
 function App() {
@@ -13,11 +39,6 @@ function App() {
   const [errors, setErrors] = useState({});
   const [selectedTicket, setSelectedTicket] = useState("Regular");
   const [noOfTickets, setNoOfTickets] = useState(1);
-  function handleSelectedTicket(e) {
-    e.preventDefault();
-    setSelectedTicket(e.target.value);
-    console.log(e.target.value);
-  }
 
   const [formData, setFormData] = useState(() => {
     const storedData = JSON.parse(localStorage.getItem("formData"));
@@ -26,17 +47,33 @@ function App() {
         fullName: "",
         email: "",
         avatar: "",
+        request: "",
       }
     );
   });
 
   const [avatar, setAvatar] = useState(null);
-  const handleAvatarChange = (e) => {
+  // const handleAvatarChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const avatarURL = URL.createObjectURL(file);
+  //     setAvatar(avatarURL);
+  //     setFormData({ ...formData, avatar: avatarURL });
+  //   }
+  // };
+
+  const handleAvatarChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      const avatarURL = URL.createObjectURL(file);
-      setAvatar(avatarURL);
-      setFormData({ ...formData, avatar: avatarURL });
+      // Upload the image to Cloudinary
+      const avatarURL = await uploadImageToCloudinary(file);
+
+      if (avatarURL) {
+        setAvatar(avatarURL); // Set the avatar URL in state
+        setFormData({ ...formData, avatar: avatarURL }); // Store the URL in form data
+      } else {
+        alert("Failed to upload image. Please try again.");
+      }
     }
   };
 
@@ -58,9 +95,6 @@ function App() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
   useEffect(() => {
     localStorage.setItem("formData", JSON.stringify(formData));
   }, [formData]);
@@ -84,6 +118,16 @@ function App() {
     setStep(1);
     localStorage.removeItem("formData");
   }
+
+  function handleSelectedTicket(e) {
+    e.preventDefault();
+    setSelectedTicket(e.target.value);
+    console.log(e.target.value);
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <main className="App">
@@ -149,7 +193,7 @@ function FormContainer({
             (step === 2 && "Attendee Details") ||
             (step === 3 && "Ready")}
         </h1>
-        <p>Step 1/3</p>
+        <p>Step {step}/3</p>
       </div>
       <hr className={`progress-bar step-${step}`} />
       {step === 3 ? (
@@ -230,10 +274,15 @@ function Form({
 
       <div className="form-btn">
         <button className="cancel" onClick={handlePrevStep}>
-          Cancel
+          {step === 2 && "Back"}
+          {step === 1 && "Cancel"}
         </button>
         <button className="next" onClick={handleNextStep}>
-          Next
+          {step === 2 &&
+            `Get my ${
+              selectedTicket === "Regular" ? "Free" : selectedTicket
+            } ticket`}
+          {step === 1 && "Next"}
         </button>
       </div>
     </form>
@@ -261,7 +310,7 @@ function TicketSelcection({
 
       <hr></hr>
 
-      <div className="ticket-container">
+      <div className="ticket-selection">
         <span className="label">Select Ticket Type:</span>
         <div className="ticket-types">
           <TicketButton
@@ -402,7 +451,13 @@ function AttendeeDetails({
 
       <div className="input-conatiner">
         <label htmlFor="request">Special request?</label>
-        <textarea id="request" placeholder="Textarea"></textarea>
+        <textarea
+          id="request"
+          name="request"
+          placeholder="Textarea"
+          value={formData.request}
+          onChange={handleChange}
+        ></textarea>
       </div>
     </>
   );
@@ -416,11 +471,36 @@ function Ticket({
   formData,
   noOfTickets,
 }) {
+  const handleDownload = () => {
+    const ticketElement = document.querySelector(".ticket");
+
+    html2canvas(ticketElement, {
+      width: 300,
+      height: 600,
+      scale: 2,
+      backgroundColor: "#197686",
+      useCORS: true,
+    }).then((canvas) => {
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = `${formData.fullName}-ticket.png`; //
+      link.click();
+    });
+  };
   return (
     <>
       <div className="ticket-container">
         <h1>Your Ticket is Booked!</h1>
-        <p>You can download or Check your email for a copy</p>
+        <p>
+          Check your email for a copy or you can{" "}
+          <span
+            className="download"
+            aria-label="download-btn"
+            onClick={handleDownlaod}
+          >
+            download
+          </span>
+        </p>
         <div
           className="ticket"
           style={{ backgroundImage: `url(${ticketimage})` }}
@@ -439,11 +519,19 @@ function Ticket({
               <div className="attendee-info">
                 <span className="attendee-name detail">
                   <span className="placeholder">Enter your name</span>
-                  <strong className="name">{formData.fullName}</strong>
+                  <span className="name bold">
+                    {formData.fullName.length > 16
+                      ? formData.fullName.slice(0, 16) + "..."
+                      : formData.fullName}
+                  </span>
                 </span>
                 <span className="attendee-email detail">
                   <span className="placeholder">Enter your email</span>
-                  <strong className="name">{formData.email}</strong>
+                  <span className="name bold">
+                    {formData.email.length > 15
+                      ? formData.email.slice(0, 14) + "..."
+                      : formData.email}
+                  </span>
                 </span>
               </div>
               <div className="attendee-ticket">
@@ -459,10 +547,7 @@ function Ticket({
 
               <div className="special-request">
                 <p>Special request?</p>
-                <span>
-                  Nil ? Or the users sad story they write in there gets this
-                  whole space, Max of three rows
-                </span>
+                <span>{formData.request}</span>
               </div>
             </div>
           </div>
@@ -473,13 +558,17 @@ function Ticket({
       </div>
 
       <div className="new-ticket-container">
-        <button className="new-ticket " onClick={handleReset}>
+        <button
+          className="new-ticket"
+          aria-label="new-ticket"
+          onClick={handleReset}
+        >
           Book Another Ticket
         </button>
         <button
           className="download-btn"
           aria-label="download-btn"
-          onClick={handleDownlaod}
+          onClick={handleDownload}
         >
           Download Ticket
         </button>
