@@ -113,6 +113,12 @@ function App() {
 
   function handleReset() {
     setStep(1);
+    setFormData({
+      fullName: "",
+      email: "",
+      avatar: "",
+    });
+    setAvatar("");
     localStorage.removeItem("formData");
   }
 
@@ -276,9 +282,11 @@ function Form({
         </button>
         <button className="next" onClick={handleNextStep}>
           {step === 2 &&
-            `Get my ${
-              selectedTicket === "Regular" ? "Free" : selectedTicket
-            } ticket`}
+            `Get My ${
+              selectedTicket === "Regular" || selectedTicket === undefined
+                ? "Free"
+                : selectedTicket
+            } Ticket`}
           {step === 1 && "Next"}
         </button>
       </div>
@@ -489,7 +497,7 @@ function Ticket({
       <div className="ticket-container">
         <h1>Your Ticket is Booked!</h1>
         <p>
-          Check your email for a copy or you can{" "}
+          Check your email for a copy or you can
           <span
             className="download"
             aria-label="download-btn"
@@ -534,7 +542,9 @@ function Ticket({
               <div className="attendee-ticket">
                 <span className="ticket-type detail">
                   <span className="placeholder">Ticket Type:</span>
-                  <span className="name"> {selectedTicket} </span>
+                  <span className="name">
+                    {selectedTicket === undefined ? "Regular" : selectedTicket}
+                  </span>
                 </span>
                 <span className="ticket-for detail">
                   <span className="placeholder">Ticket for:</span>
