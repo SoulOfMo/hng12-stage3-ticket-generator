@@ -32,8 +32,6 @@ const uploadImageToCloudinary = async (file) => {
   }
 };
 
-// import { handleAssetType } from "@cloudinary/url-gen/internal/url/cloudinaryURL";
-
 function App() {
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState({});
@@ -65,12 +63,11 @@ function App() {
   const handleAvatarChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Upload the image to Cloudinary
       const avatarURL = await uploadImageToCloudinary(file);
 
       if (avatarURL) {
-        setAvatar(avatarURL); // Set the avatar URL in state
-        setFormData({ ...formData, avatar: avatarURL }); // Store the URL in form data
+        setAvatar(avatarURL);
+        setFormData({ ...formData, avatar: avatarURL });
       } else {
         alert("Failed to upload image. Please try again.");
       }
@@ -483,7 +480,7 @@ function Ticket({
     }).then((canvas) => {
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
-      link.download = `${formData.fullName}-ticket.png`; //
+      link.download = `${formData.fullName}-ticket.png`;
       link.click();
     });
   };

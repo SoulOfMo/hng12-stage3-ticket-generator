@@ -1,24 +1,21 @@
 main {
-  background-color: $bg-color;
   min-height: 100vh;
   color: $neutral1;
-  background-image: $gradient-bg1;
+  background: $gradient-bg1;
   font-size: 1.6rem;
   font-family: $ff;
-  padding: 2rem 12rem;
+  padding: 2.4rem 12rem;
   @media (max-width: 500px) {
     padding: 1rem 2rem;
   }
   .error-container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
     .errorMsg {
       color: red;
       font-size: 1.2rem;
     }
-  }
-
-  strong {
-    overflow: hidden;
   }
 }

@@ -3,10 +3,15 @@
   flex-direction: column;
   align-items: center;
   font-family: $ff3;
-
+  h1 {
+    margin-bottom: 1.6rem;
+  }
   p {
     text-align: center;
-    line-height: 1.5;
+    font-weight: normal;
+    .download {
+      font-weight: bold;
+    }
     @media (max-width: 450px) {
       margin-top: 0;
     }
@@ -23,6 +28,9 @@
     height: 60rem;
     width: 30rem;
     padding: 2rem 2rem 2.2rem;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
 
     .ticket-details {
       width: 26rem;
@@ -74,10 +82,11 @@
         .attendee-info,
         .attendee-ticket {
           display: flex;
-          padding: 0.4rem;
+          padding: 0.4rem 0.4rem 0;
           span {
             &.detail {
               width: 10.8rem;
+              height: 4.5rem;
               display: flex;
               gap: 0.4rem;
               padding: 0.4rem;
@@ -98,8 +107,15 @@
             }
             .name {
               font-size: 1.2rem;
+              &.bold {
+                font-weight: bold;
+              }
             }
           }
+        }
+        .attendee-ticket {
+          padding-top: 0;
+          border-bottom: 1px solid #12464e;
         }
         .special-request {
           display: flex;
@@ -109,10 +125,12 @@
           p {
             color: #aaa;
             font-size: 1rem;
+            text-align: left;
           }
           span {
             font-size: 1rem;
             color: #fff;
+            height: 24px;
           }
         }
       }

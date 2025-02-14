@@ -1,7 +1,7 @@
 .form-container {
   background-color: $bg-color2;
   border: 1px solid $border-color2;
-  margin: 11.2rem auto;
+  margin: 4.6rem auto 11.2rem;
   padding: 4.8rem;
   border-radius: 4rem;
   max-width: 70rem;
@@ -12,12 +12,16 @@
   .step-details {
     display: flex;
     justify-content: space-between;
+    h1 {
+      font-weight: normal;
+    }
     p {
       font-family: $ff3;
       font-weight: normal;
     }
     @media (max-width: 425px) {
-      flex-direction: column;
+      // flex-direction: column;
+      align-items: center;
       gap: 1.2rem;
       h1 {
         font-size: 2.4rem;
@@ -28,7 +32,7 @@
 
   hr.progress-bar {
     margin-top: 1.2rem;
-    margin-bottom: 3.6rem;
+    margin-bottom: 3.2rem;
     background-color: $border-color2;
     border-radius: 0.5rem;
     border: none;
