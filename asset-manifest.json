@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/hng12-stage3-ticket-generator/static/css/main.4d704cf2.css",
-    "main.js": "/hng12-stage3-ticket-generator/static/js/main.a1518887.js",
-    "static/js/453.80c801fa.chunk.js": "/hng12-stage3-ticket-generator/static/js/453.80c801fa.chunk.js",
-    "static/media/ticket-image.png": "/hng12-stage3-ticket-generator/static/media/ticket-image.3227ab44312718c4da33.png",
-    "static/media/cloud-download.svg": "/hng12-stage3-ticket-generator/static/media/cloud-download.57c9140fab2e0e96585b26f6eb6dc703.svg",
-    "index.html": "/hng12-stage3-ticket-generator/index.html",
-    "main.4d704cf2.css.map": "/hng12-stage3-ticket-generator/static/css/main.4d704cf2.css.map",
-    "main.a1518887.js.map": "/hng12-stage3-ticket-generator/static/js/main.a1518887.js.map",
-    "453.80c801fa.chunk.js.map": "/hng12-stage3-ticket-generator/static/js/453.80c801fa.chunk.js.map"
+    "main.css": "./static/css/main.4d704cf2.css",
+    "main.js": "./static/js/main.b79b2827.js",
+    "static/js/453.80c801fa.chunk.js": "./static/js/453.80c801fa.chunk.js",
+    "static/media/ticket-image.png": "./static/media/ticket-image.3227ab44312718c4da33.png",
+    "static/media/cloud-download.svg": "./static/media/cloud-download.57c9140fab2e0e96585b26f6eb6dc703.svg",
+    "index.html": "./index.html",
+    "main.4d704cf2.css.map": "./static/css/main.4d704cf2.css.map",
+    "main.b79b2827.js.map": "./static/js/main.b79b2827.js.map",
+    "453.80c801fa.chunk.js.map": "./static/js/453.80c801fa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4d704cf2.css",
-    "static/js/main.a1518887.js"
+    "static/js/main.b79b2827.js"
   ]
 }
