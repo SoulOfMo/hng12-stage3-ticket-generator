@@ -56,13 +56,12 @@ ul {
 }
 
 main {
-  background-color: #02191d;
   min-height: 100vh;
   color: #fff;
-  background-image: radial-gradient(at bottom, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%);
+  background: radial-gradient(52.52% 32.71% at 50% 97.66%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%), #02191d;
   font-size: 1.6rem;
   font-family: "JejuMyeongjo";
-  padding: 2rem 12rem;
+  padding: 2.4rem 12rem;
 }
 @media (max-width: 500px) {
   main {
@@ -72,13 +71,12 @@ main {
 main .error-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
 }
 main .error-container .errorMsg {
   color: red;
   font-size: 1.2rem;
-}
-main strong {
-  overflow: hidden;
 }
 
 header {
@@ -89,6 +87,13 @@ header {
   padding: 1.2rem 1.6rem;
   border-radius: 24px;
   align-items: center;
+}
+@media (max-width: 425px) {
+  header {
+    width: 32rem;
+    height: 6.8rem;
+    margin: 0 auto;
+  }
 }
 header .logo img {
   width: 92px;
@@ -113,12 +118,22 @@ header button {
   border-radius: 12px;
   border: none;
   font-size: 1.6rem;
+  width: 16.9rem;
+  height: 5.2rem;
+  text-transform: uppercase;
+}
+@media (max-width: 425px) {
+  header button {
+    width: 14.4rem;
+    height: 4.4rem;
+    padding: 1.6rem 1.2rem;
+  }
 }
 
 .form-container {
   background-color: #041e23;
   border: 1px solid #0e464f;
-  margin: 11.2rem auto;
+  margin: 4.6rem auto 11.2rem;
   padding: 4.8rem;
   border-radius: 4rem;
   max-width: 70rem;
@@ -133,13 +148,16 @@ header button {
   display: flex;
   justify-content: space-between;
 }
+.form-container .step-details h1 {
+  font-weight: normal;
+}
 .form-container .step-details p {
   font-family: "Roboto", serif;
   font-weight: normal;
 }
 @media (max-width: 425px) {
   .form-container .step-details {
-    flex-direction: column;
+    align-items: center;
     gap: 1.2rem;
   }
   .form-container .step-details h1 {
@@ -149,7 +167,7 @@ header button {
 }
 .form-container hr.progress-bar {
   margin-top: 1.2rem;
-  margin-bottom: 3.6rem;
+  margin-bottom: 3.2rem;
   background-color: #0e464f;
   border-radius: 0.5rem;
   border: none;
@@ -202,9 +220,15 @@ header button {
   align-items: center;
   font-family: "Roboto", serif;
 }
+.ticket-container h1 {
+  margin-bottom: 1.6rem;
+}
 .ticket-container p {
   text-align: center;
-  line-height: 1.5;
+  font-weight: normal;
+}
+.ticket-container p .download {
+  font-weight: bold;
 }
 @media (max-width: 450px) {
   .ticket-container p {
@@ -223,6 +247,9 @@ header button {
   height: 60rem;
   width: 30rem;
   padding: 2rem 2rem 2.2rem;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
 }
 .ticket-container .ticket .ticket-details {
   width: 26rem;
@@ -275,11 +302,12 @@ header button {
 .ticket-container .ticket .ticket-details .attendee-details .attendee-info,
 .ticket-container .ticket .ticket-details .attendee-details .attendee-ticket {
   display: flex;
-  padding: 0.4rem;
+  padding: 0.4rem 0.4rem 0;
 }
 .ticket-container .ticket .ticket-details .attendee-details .attendee-info span.detail,
 .ticket-container .ticket .ticket-details .attendee-details .attendee-ticket span.detail {
   width: 10.8rem;
+  height: 4.5rem;
   display: flex;
   gap: 0.4rem;
   padding: 0.4rem;
@@ -305,6 +333,14 @@ header button {
 .ticket-container .ticket .ticket-details .attendee-details .attendee-ticket span .name {
   font-size: 1.2rem;
 }
+.ticket-container .ticket .ticket-details .attendee-details .attendee-info span .name.bold,
+.ticket-container .ticket .ticket-details .attendee-details .attendee-ticket span .name.bold {
+  font-weight: bold;
+}
+.ticket-container .ticket .ticket-details .attendee-details .attendee-ticket {
+  padding-top: 0;
+  border-bottom: 1px solid #12464e;
+}
 .ticket-container .ticket .ticket-details .attendee-details .special-request {
   display: flex;
   flex-direction: column;
@@ -314,10 +350,12 @@ header button {
 .ticket-container .ticket .ticket-details .attendee-details .special-request p {
   color: #aaa;
   font-size: 1rem;
+  text-align: left;
 }
 .ticket-container .ticket .ticket-details .attendee-details .special-request span {
   font-size: 1rem;
   color: #fff;
+  height: 24px;
 }
 .ticket-container .barcode {
   width: 23.6rem;
@@ -370,6 +408,10 @@ form .steps .ticket-details p {
   font-size: 1.6rem;
   line-height: 1.6;
 }
+form .steps .ticket-details p:nth-of-type(1) {
+  max-width: 34rem;
+  margin: 0 auto;
+}
 @media (max-width: 450px) {
   form .steps .ticket-details p {
     font-size: 1.4rem;
@@ -383,14 +425,15 @@ form .steps .ticket-details + hr {
   margin-top: 20px;
   margin: 3.2rem 0;
 }
-form .steps .ticket-container {
+form .steps .ticket-selection {
   font-family: "Roboto", serif;
   margin-bottom: 3.2rem;
 }
-form .steps .ticket-container span.label {
+form .steps .ticket-selection span.label {
   font-size: 1.6rem;
+  text-align: left;
 }
-form .steps .ticket-container .ticket-types {
+form .steps .ticket-selection .ticket-types {
   background-color: #052228;
   border-radius: 2.4rem;
   border: 2px solid #07373f;
@@ -400,12 +443,12 @@ form .steps .ticket-container .ticket-types {
   margin-top: 1.6rem;
 }
 @media (max-width: 768px) {
-  form .steps .ticket-container .ticket-types {
+  form .steps .ticket-selection .ticket-types {
     flex-direction: column;
     width: 28.7rem;
   }
 }
-form .steps .ticket-container .ticket-types button {
+form .steps .ticket-selection .ticket-types button {
   width: 15.8rem;
   padding: 1.2rem;
   border: 2px solid #197686;
@@ -418,39 +461,39 @@ form .steps .ticket-container .ticket-types button {
   text-align: left;
 }
 @media (max-width: 450px) {
-  form .steps .ticket-container .ticket-types button {
+  form .steps .ticket-selection .ticket-types button {
     width: 100%;
   }
 }
 @media (max-width: 768px) {
-  form .steps .ticket-container .ticket-types button {
+  form .steps .ticket-selection .ticket-types button {
     width: 25.5rem;
   }
 }
-form .steps .ticket-container .ticket-types button .price {
+form .steps .ticket-selection .ticket-types button .price {
   font-size: 2.4rem;
   font-weight: 600;
   border-radius: 0.8rem;
   margin-bottom: 11px;
   text-transform: capitalize;
 }
-form .steps .ticket-container .ticket-types button .type {
+form .steps .ticket-selection .ticket-types button .type {
   font-size: 1.6rem;
   height: 24px;
   width: 133px;
   color: #fafafa;
   text-transform: uppercase;
 }
-form .steps .ticket-container .ticket-types button .type + span {
+form .steps .ticket-selection .ticket-types button .type + span {
   font-size: 1.4rem;
   height: 21px;
   color: #d9d9d9;
 }
-form .steps .ticket-container .ticket-types button.active-btn {
+form .steps .ticket-selection .ticket-types button.active-btn {
   background-color: #12464e;
   border: 1px solid #197686;
 }
-form .steps .ticket-container .ticket-types button:hover {
+form .steps .ticket-selection .ticket-types button:hover {
   background-color: #2c545b;
   border: 1px solid #197686;
 }
@@ -609,6 +652,7 @@ form .steps .input-conatiner textarea {
   padding: 1.2rem;
   height: 12.7rem;
   resize: none;
+  color: #fff;
   outline: none;
 }
 form .steps .input-conatiner textarea::-moz-placeholder {
