@@ -1,7 +1,7 @@
 {
-  "homepage": "https://soulofmo.github.io/hng12-stage3-ticket-generator/",
   "name": "hng12-stage3-ticket-generator",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@cloudinary/react": "^1.13.1",
