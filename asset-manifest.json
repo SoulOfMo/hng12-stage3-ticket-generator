@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "./static/css/main.7d75d1d8.css",
-    "main.js": "./static/js/main.7e44e6ed.js",
+    "main.css": "./static/css/main.234e1bd0.css",
+    "main.js": "./static/js/main.bc84a132.js",
     "static/js/453.80c801fa.chunk.js": "./static/js/453.80c801fa.chunk.js",
     "static/media/ticket-image.png": "./static/media/ticket-image.3227ab44312718c4da33.png",
     "static/media/cloud-download.svg": "./static/media/cloud-download.57c9140fab2e0e96585b26f6eb6dc703.svg",
     "index.html": "./index.html",
-    "main.7d75d1d8.css.map": "./static/css/main.7d75d1d8.css.map",
-    "main.7e44e6ed.js.map": "./static/js/main.7e44e6ed.js.map",
+    "main.234e1bd0.css.map": "./static/css/main.234e1bd0.css.map",
+    "main.bc84a132.js.map": "./static/js/main.bc84a132.js.map",
     "453.80c801fa.chunk.js.map": "./static/js/453.80c801fa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d75d1d8.css",
-    "static/js/main.7e44e6ed.js"
+    "static/css/main.234e1bd0.css",
+    "static/js/main.bc84a132.js"
   ]
 }
