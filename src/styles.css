@@ -194,7 +194,7 @@ header button:hover {
   margin-top: 5.6rem;
   gap: 2.4rem;
 }
-@media (max-width: 425px) {
+@media (max-width: 500px) {
   .form-container .new-ticket-container {
     flex-direction: column-reverse;
   }

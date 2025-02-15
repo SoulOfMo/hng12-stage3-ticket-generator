@@ -71,7 +71,7 @@
     display: flex;
     margin-top: 5.6rem;
     gap: 2.4rem;
-    @media (max-width: "425px") {
+    @media (max-width: "500px") {
       flex-direction: column-reverse;
     }
     button {
